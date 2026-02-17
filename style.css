@@ -1,0 +1,130 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   style.css — Retro Snake
+   Dark CRT aesthetic: neon green on near-black, scanlines, glow effects.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Reset & box model ─────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Root variables ─────────────────────────────────────────────────────────── */
+
+:root {
+  --bg:          #0a0a0a;
+  --neon-green:  #00ff41;
+  --neon-dim:    #00cc33;
+  --accent:      #ff4500;
+  --text:        #ffffff;
+  --border-glow: 0 0 8px #00ff41, 0 0 20px #00ff4166;
+}
+
+/* ── Page chrome ────────────────────────────────────────────────────────────── */
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg);
+  /* Body is a flex container so the game wrapper is centred in the viewport */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* Prevent text selection, which can trigger on rapid touch input */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── Game wrapper ───────────────────────────────────────────────────────────── */
+
+#game-wrapper {
+  position: relative;
+  /* Size is set dynamically by main.js via inline styles */
+}
+
+/* ── Canvas ─────────────────────────────────────────────────────────────────── */
+
+#game-canvas {
+  display: block;
+  /* Neon green border glow — the CRT tube edge effect */
+  border: 2px solid var(--neon-green);
+  box-shadow: var(--border-glow);
+  /* Nearest-neighbour scaling keeps pixel art crisp when the canvas is scaled */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* ── CRT scanlines overlay ──────────────────────────────────────────────────── */
+
+#crt-overlay {
+  position: absolute;
+  inset: 0;                       /* covers the canvas perfectly */
+  pointer-events: none;           /* all input passes through to the canvas */
+  z-index: 10;
+
+  /*
+   * Repeating horizontal gradient that creates subtle scanlines.
+   * Each "line" is 4 px tall: 2 px transparent + 2 px semi-black.
+   * Opacity is low enough to not obscure the game content.
+   */
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.18) 2px,
+    rgba(0, 0, 0, 0.18) 4px
+  );
+
+  /* Vignette: dark edges to mimic a CRT screen curvature */
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Mute button ────────────────────────────────────────────────────────────── */
+
+#mute-btn {
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  z-index: 100;
+
+  background: transparent;
+  border: 1px solid var(--neon-green);
+  color: var(--neon-green);
+  font-size: 1.1rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  /* Subtle glow that matches the game aesthetic */
+  box-shadow: 0 0 4px var(--neon-green);
+  transition: box-shadow 0.15s ease;
+}
+
+#mute-btn:hover,
+#mute-btn:focus-visible {
+  box-shadow: var(--border-glow);
+  outline: none;
+}
+
+/* ── Credit ─────────────────────────────────────────────────────────────────── */
+
+#credit {
+  position: absolute;
+  bottom: 0;
+  left: calc(100% + 14px); /* 14px to the right of the canvas border */
+  font-family: 'PressStart2P', monospace;
+  font-size: 11px;
+  color: #666666;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ── Prevent iOS rubber-band scroll that can disorient players ─────────────── */
+body {
+  overscroll-behavior: none;
+  touch-action: none;
+}

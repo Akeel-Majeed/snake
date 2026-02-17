@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snake</title>
+
+  <!-- Retro pixel font — loaded from /public/fonts/ -->
+  <style>
+    @font-face {
+      font-family: 'PressStart2P';
+      src: url('/fonts/PressStart2P.woff2') format('woff2');
+      font-display: swap;
+    }
+  </style>
+
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!--
+    #game-wrapper centres the canvas and holds the CRT overlay.
+    The canvas dimensions are set dynamically in main.js based on the
+    viewport so the game is always square and pixel-perfect.
+  -->
+  <div id="game-wrapper">
+    <canvas id="game-canvas" aria-label="Snake game"></canvas>
+
+    <!--
+      CRT scanline overlay — a purely decorative element.
+      It sits on top of the canvas (pointer-events: none) so it doesn't
+      block mouse/touch input.
+    -->
+    <div id="crt-overlay" aria-hidden="true"></div>
+
+    <!-- Credit sits beneath the canvas, outside the game border -->
+    <p id="credit">by akeel majeed</p>
+  </div>
+
+  <!--
+    Mute button — positioned absolutely over the game wrapper.
+    It's accessible via keyboard (it's a <button>) and toggled by game.js.
+  -->
+  <button id="mute-btn" aria-label="Toggle sound" title="Toggle sound (M)">
+    🔊
+  </button>
+
+  <!-- ES module entry point -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

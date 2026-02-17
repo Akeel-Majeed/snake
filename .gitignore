@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Vite cache
+.vite/
+
+# Coverage reports
+coverage/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor metadata
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment files (never commit secrets)
+.env
+.env.local
+.env.*.local
