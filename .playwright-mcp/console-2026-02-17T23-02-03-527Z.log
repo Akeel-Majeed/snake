@@ -1,8 +1,0 @@
-[   56836ms] TypeError: this._input.onAnyInput is not a function
-    at Game._wireInput (http://localhost:5173/src/game.js?t=1771369379998:93:17)
-    at new Game (http://localhost:5173/src/game.js?t=1771369379998:73:10)
-    at http://localhost:5173/src/main.js?t=1771369379998:47:14
-[   73600ms] TypeError: this._input.onAnyInput is not a function
-    at Game._wireInput (http://localhost:5173/src/game.js?t=1771369396228:93:17)
-    at new Game (http://localhost:5173/src/game.js?t=1771369396228:73:10)
-    at http://localhost:5173/src/main.js?t=1771369396228:47:14

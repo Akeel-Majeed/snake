@@ -20,6 +20,10 @@ Thumbs.db
 *.swp
 *.swo
 
+# Claude Code / Playwright debug artifacts
+.claude/
+.playwright-mcp/
+
 # Environment files (never commit secrets)
 .env
 .env.local
