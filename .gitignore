@@ -23,6 +23,7 @@ Thumbs.db
 # Claude Code / Playwright debug artifacts
 .claude/
 .playwright-mcp/
+CLAUDE.md
 
 # Environment files (never commit secrets)
 .env
