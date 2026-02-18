@@ -24,6 +24,7 @@ Thumbs.db
 .claude/
 .playwright-mcp/
 CLAUDE.md
+CLAUDE.local.md
 
 # Environment files (never commit secrets)
 .env
